@@ -15,8 +15,10 @@ For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
 
-Mata Kuliah: Manajemen Proyek TI
+## Mata Kuliah: Manajemen Proyek TI
+
 Dosen Pengampu: Erika Maulidiya S.Kom
+
 
 Tim 2
 - Muhammad Rizki Ramadhan
