@@ -1,8 +1,10 @@
 // lib/screens/login_screen.dart
 
 import 'package:flutter/material.dart';
+import 'package:hydroponics_app/widgets/log_reg_footer.dart';
 import 'package:hydroponics_app/widgets/styled_elevated_button.dart';
 import 'package:hydroponics_app/widgets/styled_text_form_field.dart';
+import 'package:hydroponics_app/widgets/log_reg_header.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -34,7 +36,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     // Header
-                    _buildHeader(),
+                    LogRegHeader(title: "LOGIN", subtitle: "Welcome"),
                     _gap(),
 
                     // Username Field
@@ -91,13 +93,19 @@ class _LoginScreenState extends State<LoginScreen> {
                           /// do something
                         }
                       },
-                      foregroundColor: Color.fromARGB(255, 59, 59, 59),
-                      backgroundColor: const Color.fromARGB(255, 238, 238, 238),
+                      foregroundColor: Colors.white,
+                      backgroundColor: const Color.fromARGB(255, 116, 116, 116),
                     ),
                     SizedBox(height: 100),
 
                     // Footer
-                    _buildFooter(),
+                    LogRegFooter(
+                      label: "Don't have an account?", 
+                      buttonText: "Register", 
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/register');
+                      },
+                    ),
                   ],
                 ),
               ),
@@ -109,36 +117,6 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   // Specific Widget Builders
-
-  Widget _buildHeader() {
-    return Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0),
-          child: Text(
-            "LOGIN",
-            style: TextStyle(
-              fontSize: 40,
-              fontWeight: FontWeight.w900,
-              fontFamily: 'Roboto',
-            ),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(top: 35.0, bottom: 13.0),
-          child: Text(
-            "Welcome",
-            style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.w400,
-              fontFamily: 'Roboto',
-            ),
-            textAlign: TextAlign.center,
-          ),
-        ),
-      ],
-    );
-  }
 
   Widget _buildForgotPasswordButton() {
     return Padding(
@@ -163,32 +141,5 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  Widget _buildFooter() {
-    return Column(
-      children: [
-        Padding(
-          padding: EdgeInsets.only(bottom: 8.0),
-          child: Text(
-            "Don't have an account?",
-            style: TextStyle(
-              fontSize: 14,
-              fontWeight: FontWeight.w400,
-              fontFamily: 'Roboto',
-            ),
-          ),
-        ),
-        // Menggunakan Widget Tombol Baru Kita
-        StyledElevatedButton(
-          text: 'Register',
-          onPressed: () {
-            Navigator.pushNamed(context, '/register');
-          },
-          foregroundColor: Colors.white,
-          backgroundColor: const Color.fromARGB(255, 116, 116, 116),
-        ),
-      ],
-    );
-  }
-
-  Widget _gap() => const SizedBox(height: 16);
+    Widget _gap() => const SizedBox(height: 16);
 }
