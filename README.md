@@ -1,4 +1,4 @@
-# hydroponics_app
+# Hydroponic App
 
 A new Flutter project.
 
