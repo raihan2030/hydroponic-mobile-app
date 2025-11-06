@@ -36,17 +36,17 @@ class _LoginScreenState extends State<LoginScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     // Header
-                    LogRegHeader(title: "LOGIN", subtitle: "Welcome"),
+                    LogRegHeader(title: "MASUK", subtitle: "Selamat Datang"),
                     _gap(),
 
                     // Username Field
                     StyledTextFormField(
-                      labelText: 'Username',
-                      hintText: 'Enter your username',
+                      labelText: 'Nama Pengguna',
+                      hintText: 'Masukkan nama pengguna Anda',
                       prefixIcon: Icons.person,
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return 'Please enter some text';
+                          return 'Silakan masukkan nama pengguna Anda';
                         }
                         return null;
                       },
@@ -55,16 +55,16 @@ class _LoginScreenState extends State<LoginScreen> {
 
                     // Password Field
                     StyledTextFormField(
-                      labelText: 'Password',
-                      hintText: 'Enter your password',
+                      labelText: 'Kata Sandi',
+                      hintText: 'Masukkan kata sandi Anda',
                       prefixIcon: Icons.lock_outline_rounded,
                       obscureText: !_isPasswordVisible,
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return 'Please enter some text';
+                          return 'Silakan masukkan kata sandi Anda';
                         }
                         if (value.length < 6) {
-                          return 'Password must be at least 6 characters';
+                          return 'Kata sandi harus terdiri dari minimal 6 karakter';
                         }
                         return null;
                       },
@@ -87,7 +87,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
                     // Login Button
                     StyledElevatedButton(
-                      text: 'Login',
+                      text: 'Masuk',
                       onPressed: () {
                         if (_formKey.currentState?.validate() ?? false) {
                           /// do something
@@ -100,8 +100,8 @@ class _LoginScreenState extends State<LoginScreen> {
 
                     // Footer
                     LogRegFooter(
-                      label: "Don't have an account?", 
-                      buttonText: "Register", 
+                      label: "Belum punya akun?", 
+                      buttonText: "Daftar", 
                       onPressed: () {
                         Navigator.pushNamed(context, '/register');
                       },
@@ -128,7 +128,7 @@ class _LoginScreenState extends State<LoginScreen> {
             /// do something
           },
           child: const Text(
-            'Forgot Password?',
+            'Lupa Kata Sandi?',
             style: TextStyle(
               fontSize: 14,
               fontWeight: FontWeight.w400,

@@ -35,17 +35,17 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     // Header
-                    LogRegHeader(title: "REGISTER", subtitle: "Create your account"),
+                    LogRegHeader(title: "DAFTAR", subtitle: "Buat akun Anda"),
                     _gap(),
 
                     // Username Field
                     StyledTextFormField(
-                      labelText: 'Username',
-                      hintText: 'Enter your username',
+                      labelText: 'Nama Pengguna',
+                      hintText: 'Masukkan nama pengguna Anda',
                       prefixIcon: Icons.person,
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return 'Please enter some text';
+                          return 'Silakan masukkan nama pengguna Anda';
                         }
                         return null;
                       },
@@ -54,12 +54,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
                     // Role Field
                     StyledTextFormField(
-                      labelText: 'Role',
-                      hintText: 'Enter your role',
+                      labelText: 'Posisi',
+                      hintText: 'Masukkan posisi Anda',
                       prefixIcon: Icons.card_travel,
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return 'Please enter some text';
+                          return 'Silakan masukkan posisi Anda';
                         }
                         return null;
                       },
@@ -68,13 +68,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
                     // Password Field
                     StyledTextFormField(
-                      labelText: 'Password',
-                      hintText: 'Enter your password',
+                      labelText: 'Kata Sandi',
+                      hintText: 'Masukkan kata sandi Anda',
                       prefixIcon: Icons.lock_outline_rounded,
                       obscureText: !_isPasswordVisible,
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return 'Please enter your password';
+                          return 'Silakan masukkan kata sandi Anda';
                         }
                         return null;
                       },
@@ -95,13 +95,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
                     // Confirm Password Field
                     StyledTextFormField(
-                      labelText: 'Confirm Password',
-                      hintText: 'Re-enter your password',
+                      labelText: 'Konfirmasi Kata Sandi',
+                      hintText: 'Masukkan kembali kata sandi Anda',
                       prefixIcon: Icons.lock_outline_rounded,
                       obscureText: !_isConfirmPasswordVisible,
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return 'Please confirm your password';
+                          return 'Silakan konfirmasi kata sandi Anda';
                         }
                         return null;
                       },
@@ -128,15 +128,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           /// do something
                         }
                       },
-                      text: 'Register',
+                      text: 'Daftar',
                       foregroundColor: Colors.white,
                       backgroundColor: const Color.fromARGB(255, 116, 116, 116),
                     ),
                     SizedBox(height: 80),
 
                     LogRegFooter(
-                      label: "Already have an account?", 
-                      buttonText: "Login", 
+                      label: "Sudah punya akun?", 
+                      buttonText: "Masuk", 
                       onPressed: () {
                         Navigator.pushNamed(context, '/login');
                       },
