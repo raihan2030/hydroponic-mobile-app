@@ -7,11 +7,11 @@ class LogRegFooter extends StatelessWidget {
   final VoidCallback onPressed;
 
   const LogRegFooter({
-    Key? key,
+    super.key,
     required this.label,
     required this.buttonText,
     required this.onPressed,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
