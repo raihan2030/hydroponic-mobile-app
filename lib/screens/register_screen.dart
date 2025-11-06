@@ -12,12 +12,16 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
+  bool _isPasswordVisible = false;
+  bool _isConfirmPasswordVisible = false;
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Form(
+        key: _formKey,
         child: Center(
           child: Card(
             color: Colors.white,
@@ -67,13 +71,25 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       labelText: 'Password',
                       hintText: 'Enter your password',
                       prefixIcon: Icons.lock_outline_rounded,
-                      obscureText: true,
+                      obscureText: !_isPasswordVisible,
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return 'Please enter your password';
                         }
                         return null;
                       },
+                      suffixIcon: IconButton(
+                        icon: Icon(
+                          _isPasswordVisible
+                              ? Icons.visibility_off
+                              : Icons.visibility,
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            _isPasswordVisible = !_isPasswordVisible;
+                          });
+                        },
+                      ),
                     ),
                     _gap(),
 
@@ -82,13 +98,25 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       labelText: 'Confirm Password',
                       hintText: 'Re-enter your password',
                       prefixIcon: Icons.lock_outline_rounded,
-                      obscureText: true,
+                      obscureText: !_isConfirmPasswordVisible,
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return 'Please confirm your password';
                         }
                         return null;
                       },
+                      suffixIcon: IconButton(
+                        icon: Icon(
+                          _isConfirmPasswordVisible
+                              ? Icons.visibility_off
+                              : Icons.visibility,
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            _isConfirmPasswordVisible = !_isConfirmPasswordVisible;
+                          });
+                        },
+                      ),
                     ),
                     _gap(),
                     _gap(),
@@ -96,7 +124,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     // Register Button
                     StyledElevatedButton(
                       onPressed: () {
-                        // Handle registration logic here
+                        if (_formKey.currentState?.validate() ?? false) {
+                          /// do something
+                        }
                       },
                       text: 'Register',
                       foregroundColor: Colors.white,
