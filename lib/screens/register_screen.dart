@@ -3,6 +3,7 @@ import 'package:hydroponics_app/widgets/log_reg_footer.dart';
 import 'package:hydroponics_app/widgets/log_reg_header.dart';
 import 'package:hydroponics_app/widgets/styled_elevated_button.dart';
 import 'package:hydroponics_app/widgets/styled_text_form_field.dart';
+import 'package:hydroponics_app/widgets/styled_dropdown_button_form_field.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
@@ -14,6 +15,15 @@ class RegisterScreen extends StatefulWidget {
 class _RegisterScreenState extends State<RegisterScreen> {
   bool _isPasswordVisible = false;
   bool _isConfirmPasswordVisible = false;
+
+  String? _selectedCategory;
+  final List<String> _categories = [
+    'Petani',
+    'Kurir',
+    'Staf Logistik',
+    'Admin',
+  ];
+
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
@@ -34,6 +44,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+                    SizedBox(height: 50),
                     // Header
                     LogRegHeader(title: "DAFTAR", subtitle: "Buat akun Anda"),
                     _gap(),
@@ -52,14 +63,25 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     ),
                     _gap(),
 
-                    // Role Field
-                    StyledTextFormField(
-                      labelText: 'Posisi',
-                      hintText: 'Masukkan posisi Anda',
+                    // Role Dropdown Field
+                    StyledDropdownButtonFormField<String>(
+                      hintText: 'Pilih Posisi Anda',
                       prefixIcon: Icons.card_travel,
+                      value: _selectedCategory,
+                      items: _categories.map((String category) {
+                        return DropdownMenuItem<String>(
+                          value: category,
+                          child: Text(category),
+                        );
+                      }).toList(),
+                      onChanged: (String? newValue) {
+                        setState(() {
+                          _selectedCategory = newValue;
+                        });
+                      },
                       validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Silakan masukkan posisi Anda';
+                        if (value == null) {
+                          return 'Silakan pilih posisi Anda';
                         }
                         return null;
                       },
