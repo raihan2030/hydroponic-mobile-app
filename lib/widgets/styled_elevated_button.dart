@@ -7,6 +7,7 @@ class StyledElevatedButton extends StatelessWidget {
   final VoidCallback onPressed;
   final Color? foregroundColor;
   final Color? backgroundColor;
+  final IconData? icon;
 
   const StyledElevatedButton({
     super.key,
@@ -14,6 +15,7 @@ class StyledElevatedButton extends StatelessWidget {
     required this.onPressed,
     this.foregroundColor,
     this.backgroundColor,
+    this.icon,
   });
 
   @override
@@ -32,12 +34,20 @@ class StyledElevatedButton extends StatelessWidget {
         onPressed: onPressed,
         child: Padding(
           padding: EdgeInsets.all(10.0),
-          child: Text(
-            text,
-            style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-            ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                text,
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              if (icon != null) ...[
+                Icon(icon),
+              ],
+            ],
           ),
         ),
       ),
