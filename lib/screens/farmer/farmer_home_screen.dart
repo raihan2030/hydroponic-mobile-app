@@ -109,7 +109,7 @@ class _FarmerHomeScreenState extends State<FarmerHomeScreen> {
                   children: [
                     SizedBox(height: 10),
                     Text(
-                      'Total Sedang Ditanam',
+                      'Total Tanaman Kamu',
                       style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
                     ),
                     SizedBox(height: 10),

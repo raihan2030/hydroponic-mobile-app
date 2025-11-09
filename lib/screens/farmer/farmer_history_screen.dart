@@ -8,11 +8,10 @@ class FarmerHistoryScreen extends StatefulWidget {
 }
 
 class _FarmerHistoryScreenState extends State<FarmerHistoryScreen> {
-  final List<Item> _data = List.generate(
-    15, // Buat 8 item
-    (int index) => Item(
+  final List<Item> _data = List.generate(6, (int index) => 
+    Item(
       id: index,
-      headerValue: 'Panel ${index + 1}',
+      headerValue: '0${index + 1} November 2024',
       expandedValue: 'Ini adalah konten detail untuk Panel ${index + 1}',
     ),
   );
@@ -20,48 +19,95 @@ class _FarmerHistoryScreenState extends State<FarmerHistoryScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        title: const Text('Riwayat'),
+        title: const Text('Riwayat Tanam', style: TextStyle(fontWeight: FontWeight.bold),),
+        titleSpacing: 25,
+        foregroundColor: Colors.white,
+        backgroundColor: Color.fromARGB(255, 1, 68, 33),
       ),
-      body: SingleChildScrollView(
-        child: Container(
-          padding: EdgeInsets.all(20),
-          child: ExpansionPanelList(
-            expansionCallback: (int index, bool isExpanded) {
-              setState(() {
-                // Balik status 'isExpanded' dari item yang diklik
-                _data[index].isExpanded = !_data[index].isExpanded;
-              });
-            },
-            children: _data.map<ExpansionPanel>((Item item) {
-              return ExpansionPanel(
-                // headerBuilder: Tampilan saat panel tertutup (header)
-                headerBuilder: (BuildContext context, bool isExpanded) {
-                  return ListTile(
-                    title: Text(item.headerValue),
-                  );
-                },
-                // body: Konten yang tampil saat panel terbuka
-                body: ListTile(
-                  title: Text(item.expandedValue),
-                  subtitle:
-                      const Text('Tambahkan widget lain di sini jika perlu'),
-                  trailing: const Icon(Icons.delete),
-                  onTap: () {
-                    // Aksi saat konten di-klik
-                  },
-                ),
-                // isExpanded: Status panel (terbuka/tertutup)
-                // Ini mengambil data dari state kita
-                isExpanded: item.isExpanded,
-              );
-            }).toList(), // Ubah hasil .map() menjadi List
-          ),
+      body: Container(
+        padding: EdgeInsets.only(right: 15, left: 15, top: 15),
+        child: ListView.builder(
+          itemCount: _data.length,
+          itemBuilder: (context, index) {
+            final item = _data[index];
+
+            // Gunakan Card untuk membungkus
+            return Card(
+              // 'margin' adalah jarak fisik antar elemen
+              margin: const EdgeInsets.symmetric(vertical: 6.0, horizontal: 8.0),
+              // 'clipBehavior' agar rapi
+              clipBehavior: Clip.antiAlias,
+              color: const Color.fromARGB(255, 226, 226, 226),
+              
+              child: ExpansionTile(
+                backgroundColor: Color.fromARGB(255, 1, 68, 33),
+                textColor: Colors.white,
+                iconColor: Colors.white,
+                title: Text(item.headerValue, style: TextStyle(fontWeight: FontWeight.bold),),
+                children: <Widget>[
+                  ListTile(
+                    textColor: Colors.white,
+                    subtitle: SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: DataTable(
+                        border: TableBorder.all(
+                          color: Colors.white,
+                          style: BorderStyle.solid
+                        ),
+                        columns: [
+                          DataColumn(label: Text('Jenis Tanaman', style: TextStyle(color: Colors.white),)),
+                          DataColumn(label: Text('Instalasi', style: TextStyle(color: Colors.white),)),
+                          DataColumn(label: Text('Jumlah bibit', style: TextStyle(color: Colors.white),)),
+                          DataColumn(label: Text('Siap Panen', style: TextStyle(color: Colors.white),)),
+                          DataColumn(label: Text('Menu', style: TextStyle(color: Colors.white),)),
+                        ],
+                        rows: [
+                          DataRow(cells: [
+                            DataCell(Text('Selada', style: TextStyle(color: Colors.white),)),
+                            DataCell(Text('1', style: TextStyle(color: Colors.white),)),
+                            DataCell(Text('44', style: TextStyle(color: Colors.white),)),
+                            DataCell(Text('True', style: TextStyle(color: Colors.white),)),
+                            DataCell(Row(children: [
+                              Icon(Icons.edit, color: Colors.white,),
+                              SizedBox(width: 10,),
+                              Icon(Icons.delete, color: Colors.white,)
+                            ],)),
+                          ]),
+                          DataRow(cells: [
+                            DataCell(Text('Seledri', style: TextStyle(color: Colors.white),)),
+                            DataCell(Text('2', style: TextStyle(color: Colors.white),)),
+                            DataCell(Text('30', style: TextStyle(color: Colors.white),)),
+                            DataCell(Text('False', style: TextStyle(color: Colors.white),)),
+                            DataCell(Row(children: [
+                              Icon(Icons.edit, color: Colors.white,),
+                              SizedBox(width: 10,),
+                              Icon(Icons.delete, color: Colors.white,)
+                            ],)),
+                          ]),
+                          DataRow(cells: [
+                            DataCell(Text('Pakcoy', style: TextStyle(color: Colors.white),)),
+                            DataCell(Text('3', style: TextStyle(color: Colors.white),)),
+                            DataCell(Text('25', style: TextStyle(color: Colors.white),)),
+                            DataCell(Text('True', style: TextStyle(color: Colors.white),)),
+                            DataCell(Row(children: [
+                              Icon(Icons.edit, color: Colors.white,),
+                              SizedBox(width: 10,),
+                              Icon(Icons.delete, color: Colors.white,)
+                            ],)),
+                          ]),
+                        ],
+                      )
+                    )
+                  ),
+                  SizedBox(height: 10)
+                ],
+              ),
+            );
+          },
+        ),
       )
-      )
-        // child: const Center(
-        //   child: Text('Riwayat Kosong')
-        // ),
       
     );
   }
