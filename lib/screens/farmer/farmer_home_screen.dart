@@ -11,14 +11,14 @@ class FarmerHomeScreen extends StatefulWidget {
 }
 
 class _FarmerHomeScreenState extends State<FarmerHomeScreen> {
-  int _selectedIndex = 0;
+  // int _selectedIndex = 0;
 
-  // Fungsi untuk mengubah index saat item diklik
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
+  // // Fungsi untuk mengubah index saat item diklik
+  // void _onItemTapped(int index) {
+  //   setState(() {
+  //     _selectedIndex = index;
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -33,10 +33,10 @@ class _FarmerHomeScreenState extends State<FarmerHomeScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: const [
             Text(
-              'Username',
+              'Nama Pengguna',
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
-            Text('Role', style: TextStyle(fontSize: 14)),
+            Text('Posisi', style: TextStyle(fontSize: 14)),
           ],
         ),
         leading: Padding(
@@ -62,17 +62,22 @@ class _FarmerHomeScreenState extends State<FarmerHomeScreen> {
         ),
         actions: [
           Padding(
-            padding: const EdgeInsets.only(right: 10.0),
+            padding: const EdgeInsets.only(
+              right: 20.0,
+              top: 15.0,
+              bottom: 15.0,
+            ),
             child: InkWell(
               onTap: () {
                 // Navigator.pushNamed(context, '/login');
               },
+              borderRadius: BorderRadius.circular(10),
               child: Container(
-                margin: const EdgeInsets.all(10),
+                margin: const EdgeInsets.all(0),
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
                   color: Colors.transparent,
-                  borderRadius: BorderRadius.circular(7),
+                  // borderRadius: BorderRadius.circular(7),
                 ),
                 child: const Icon(
                   Icons.notifications,
@@ -90,23 +95,39 @@ class _FarmerHomeScreenState extends State<FarmerHomeScreen> {
         children: [
           SizedBox(
             width: double.infinity,
-            height: 160,
+            height: 180,
             child: ColoredBox(
               color: Color.fromARGB(255, 1, 68, 33),
               child: Padding(
-                padding: const EdgeInsets.all(20),
-                child: SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: [
-                      FarmerPlantCard(plantName: 'Selada', plantCount: 67),
-                      SizedBox(width: 10),
-                      FarmerPlantCard(plantName: 'Seledri', plantCount: 35),
-                      SizedBox(width: 10),
-                      FarmerPlantCard(plantName: 'Pakcoy', plantCount: 50),
-                    ],
-                  ),
+                padding: const EdgeInsets.only(
+                  left: 20.0,
+                  right: 20.0,
                 ),
+                child: 
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(height: 10),
+                    Text(
+                      'Total Sedang Ditanam',
+                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
+                    ),
+                    SizedBox(height: 10),
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: [
+                          FarmerPlantCard(plantName: 'Selada', plantCount: 67),
+                          SizedBox(width: 10),
+                          FarmerPlantCard(plantName: 'Seledri', plantCount: 35),
+                          SizedBox(width: 10),
+                          FarmerPlantCard(plantName: 'Pakcoy', plantCount: 50),
+                        ],
+                      ),
+                    ),
+                  ],
+                )
+                
               ),
             ),
           ),
@@ -155,22 +176,22 @@ class _FarmerHomeScreenState extends State<FarmerHomeScreen> {
           ),
         ],
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Beranda'),
-          BottomNavigationBarItem(icon: Icon(Icons.history), label: 'Riwayat'),
-          BottomNavigationBarItem(icon: Icon(Icons.list), label: 'Tugas Panen'),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profil'),
-        ],
+      // bottomNavigationBar: BottomNavigationBar(
+      //   items: const <BottomNavigationBarItem>[
+      //     BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Beranda'),
+      //     BottomNavigationBarItem(icon: Icon(Icons.history), label: 'Riwayat'),
+      //     BottomNavigationBarItem(icon: Icon(Icons.list), label: 'Tugas Panen'),
+      //     BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profil'),
+      //   ],
 
-        type: BottomNavigationBarType.fixed, // Memaksa agar tetap tipe fixed
+      //   type: BottomNavigationBarType.fixed, // Memaksa agar tetap tipe fixed
 
-        selectedItemColor: Color.fromARGB(255, 1, 68, 33), // Warna item aktif
-        unselectedItemColor: Colors.grey, // Warna item tidak aktif
-        backgroundColor: const Color.fromARGB(255, 231, 255, 237),
-        currentIndex: _selectedIndex,
-        onTap: _onItemTapped,
-      ),
+      //   selectedItemColor: Color.fromARGB(255, 1, 68, 33), // Warna item aktif
+      //   unselectedItemColor: Colors.grey, // Warna item tidak aktif
+      //   backgroundColor: const Color.fromARGB(255, 231, 255, 237),
+      //   currentIndex: _selectedIndex,
+      //   onTap: _onItemTapped,
+      // ),
     );
   }
 }
