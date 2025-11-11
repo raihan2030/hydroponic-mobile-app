@@ -33,7 +33,6 @@ class _FarmerHistoryScreenState extends State<FarmerHistoryScreen> {
           itemBuilder: (context, index) {
             final item = _data[index];
 
-            // Gunakan Card untuk membungkus
             return Card(
               // 'margin' adalah jarak fisik antar elemen
               margin: const EdgeInsets.symmetric(vertical: 6.0, horizontal: 8.0),

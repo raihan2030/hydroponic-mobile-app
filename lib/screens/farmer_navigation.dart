@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hydroponics_app/screens/farmer/farmer_harvest_screen.dart';
 import 'package:hydroponics_app/screens/farmer/farmer_history_screen.dart';
 import 'package:hydroponics_app/screens/farmer/farmer_home_screen.dart';
-import 'package:hydroponics_app/screens/farmer/farmer_profile_screen.dart';
+import 'package:hydroponics_app/screens/profile_screen.dart';
 
 class FarmerNavigation extends StatefulWidget{
   const FarmerNavigation({super.key});
@@ -12,15 +12,14 @@ class FarmerNavigation extends StatefulWidget{
 }
 
 class _FarmerNavigationState extends State<FarmerNavigation> {
-  // variabel untuk menyimpan index halaman yang aktif
-  int _selectedIndex = 1;
+  int _selectedIndex = 3;
 
   // daftar halaman yang akan ditampilkan
   final List<Widget> _halaman = [
     const FarmerHomeScreen(),
     const FarmerHistoryScreen(),
     const FarmerHarvestScreen(),
-    const FarmerProfileScreen(),
+    const ProfileScreen(),
   ];
 
   // fungsi untuk mengubah index halaman saat item diklik
