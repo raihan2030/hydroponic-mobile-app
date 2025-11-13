@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:hydroponics_app/screens/farmer/add_plant_data.dart';
+import 'package:hydroponics_app/screens/farmer/maintenance_detail.dart';
 import 'package:hydroponics_app/screens/farmer_navigation.dart';
 import 'package:hydroponics_app/screens/login_screen.dart';
+import 'package:hydroponics_app/screens/notification_screen.dart';
 import 'package:hydroponics_app/screens/register_screen.dart';
 
 void main() {
@@ -13,7 +16,7 @@ class HydroponicApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Hydroponic App',
+      title: 'E-Ponic',
       theme: ThemeData(
         primarySwatch: Colors.grey,
       ),
@@ -23,6 +26,9 @@ class HydroponicApp extends StatelessWidget {
         '/login': (context) => const LoginScreen(),
         '/register': (context) => const RegisterScreen(),
         '/farmer_navigation': (context) => const FarmerNavigation(),
+        '/add_plant_data': (context) => const AddPlantData(),
+        '/maintenance_detail': (context) => const MaintenanceDetail(),
+        '/notification': (context) => const NotificationScreen()
       },
     );
   }

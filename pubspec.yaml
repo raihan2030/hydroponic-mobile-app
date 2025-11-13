@@ -35,6 +35,8 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
 
+  intl: ^0.20.2
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -46,6 +48,20 @@ dev_dependencies:
   # rules and activating additional ones.
   flutter_lints: ^6.0.0
 
+  flutter_launcher_icons: 0.11.0
+  flutter_app_name: ^0.1.1
+
+flutter_launcher_icons:
+  android: true       # Buat ikon untuk Android
+  ios: true           # Buat ikon untuk iOS
+  image_path: "assets/icon/logo.png" # Lokasi file logo utama Anda
+
+  # Pengaturan khusus Adaptive Icon untuk Android
+  adaptive_icon_background: "#FFFFFF" # Warna latar belakang (HEX code)
+  adaptive_icon_foreground: "assets/icon/logo.png" # Logo transparan lagi
+
+flutter_app_name:
+  name: "E-Ponic"
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 

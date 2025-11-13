@@ -12,7 +12,7 @@ class FarmerNavigation extends StatefulWidget{
 }
 
 class _FarmerNavigationState extends State<FarmerNavigation> {
-  int _selectedIndex = 3;
+  int _selectedIndex = 0;
 
   // daftar halaman yang akan ditampilkan
   final List<Widget> _halaman = [

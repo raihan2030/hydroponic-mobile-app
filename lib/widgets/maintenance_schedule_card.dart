@@ -2,14 +2,16 @@ import 'package:flutter/material.dart';
 
 class MaintenanceScheduleCard extends StatelessWidget {
   final String taskName;
-  final String installation;
-  final String dateTime;
+  final String date;
+  final String time;
+  final VoidCallback onTap;
 
   const MaintenanceScheduleCard({
     super.key,
     required this.taskName,
-    required this.installation,
-    required this.dateTime,
+    required this.date,
+    required this.time,
+    required this.onTap
   });
 
   @override
@@ -17,9 +19,7 @@ class MaintenanceScheduleCard extends StatelessWidget {
     return Card.outlined(
       color: Colors.white,
       child: InkWell(
-        onTap: () {
-          // Navigator.pushNamed(context, '/farmer_schedule_detail');
-        },
+        onTap: onTap,
         child: ListTile(
           leading: Icon(Icons.calendar_today),
           title: Text(
@@ -33,8 +33,8 @@ class MaintenanceScheduleCard extends StatelessWidget {
           subtitle: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(installation),
-              Text(dateTime),
+              Text(time),
+              Text(date),
             ],
           ),
         ),

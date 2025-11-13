@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hydroponics_app/widgets/farmer_plant_card.dart';
+import 'package:hydroponics_app/widgets/home_app_bar.dart';
 import 'package:hydroponics_app/widgets/maintenance_schedule_card.dart';
 import 'package:hydroponics_app/widgets/styled_elevated_button.dart';
 
@@ -11,125 +12,30 @@ class FarmerHomeScreen extends StatefulWidget {
 }
 
 class _FarmerHomeScreenState extends State<FarmerHomeScreen> {
-  // int _selectedIndex = 0;
-
-  // // Fungsi untuk mengubah index saat item diklik
-  // void _onItemTapped(int index) {
-  //   setState(() {
-  //     _selectedIndex = index;
-  //   });
-  // }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        toolbarHeight: 80,
-        backgroundColor: const Color.fromARGB(255, 1, 68, 33),
-        foregroundColor: Colors.white,
-        titleSpacing: 20,
-        title: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: const [
-            Text(
-              'Nama Pengguna',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            ),
-            Text('Posisi', style: TextStyle(fontSize: 14)),
-          ],
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(80),
+        child: HomeAppBar(
+          username: 'Muhammad Fulan', 
+          role: 'Petani Selada', 
+          onNotificationTap: () {
+            Navigator.pushNamed(context, '/notification');
+          },
         ),
-        leading: Padding(
-          padding: const EdgeInsets.only(left: 10.0),
-          child: GestureDetector(
-            onTap: () {
-              // Navigator.pushNamed(context, '/farmer_profile');
-            },
-            child: Container(
-              margin: const EdgeInsets.all(10),
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                color: Colors.transparent,
-                borderRadius: BorderRadius.circular(7),
-              ),
-              child: const Icon(
-                Icons.account_circle,
-                color: Colors.white,
-                size: 35,
-              ),
-            ),
-          ),
-        ),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(
-              right: 20.0,
-              top: 15.0,
-              bottom: 15.0,
-            ),
-            child: InkWell(
-              onTap: () {
-                // Navigator.pushNamed(context, '/login');
-              },
-              borderRadius: BorderRadius.circular(10),
-              child: Container(
-                margin: const EdgeInsets.all(0),
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                  color: Colors.transparent,
-                  // borderRadius: BorderRadius.circular(7),
-                ),
-                child: const Icon(
-                  Icons.notifications,
-                  color: Colors.white,
-                  size: 30,
-                ),
-              ),
-            ),
-          ),
-        ],
       ),
 
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(
-            width: double.infinity,
-            height: 180,
-            child: ColoredBox(
-              color: Color.fromARGB(255, 1, 68, 33),
-              child: Padding(
-                padding: const EdgeInsets.only(
-                  left: 20.0,
-                  right: 20.0,
-                ),
-                child: 
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(height: 10),
-                    Text(
-                      'Total Tanaman Kamu',
-                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
-                    ),
-                    SizedBox(height: 10),
-                    SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Row(
-                        children: [
-                          FarmerPlantCard(plantName: 'Selada', plantCount: 67),
-                          SizedBox(width: 10),
-                          FarmerPlantCard(plantName: 'Seledri', plantCount: 35),
-                          SizedBox(width: 10),
-                          FarmerPlantCard(plantName: 'Pakcoy', plantCount: 50),
-                        ],
-                      ),
-                    ),
-                  ],
-                )
-                
-              ),
-            ),
+          Container(
+            padding: EdgeInsets.all(15),
+            color: Color.fromARGB(255, 1, 68, 33),
+            child: 
+              FarmerPlantCard(header: 'Total Bibit Ditanam', plantCount: 67),
           ),
           Padding(
             padding: const EdgeInsets.all(20.0),
@@ -139,7 +45,7 @@ class _FarmerHomeScreenState extends State<FarmerHomeScreen> {
                 StyledElevatedButton(
                   text: 'Tambah Data Tanaman ',
                   onPressed: () {
-                    // Handle add plant action
+                    Navigator.pushNamed(context, '/add_plant_data');
                   },
                   foregroundColor: Colors.white,
                   backgroundColor: Color.fromARGB(255, 1, 68, 33),
@@ -156,18 +62,27 @@ class _FarmerHomeScreenState extends State<FarmerHomeScreen> {
                   children: [
                     MaintenanceScheduleCard(
                       taskName: 'Penambahan Nutrisi',
-                      installation: 'Instalasi 1',
-                      dateTime: '25 Juni 2024, 08:00 AM',
+                      date: '08:00 AM',
+                      time: '25 Juni 2024',
+                      onTap: () {
+                        Navigator.pushNamed(context, '/maintenance_detail');
+                      },
                     ),
                     MaintenanceScheduleCard(
                       taskName: 'Pemeriksaan pH Air',
-                      installation: 'Instalasi 2',
-                      dateTime: '26 Juni 2024, 10:00 AM',
+                      date: '10:00 AM',
+                      time: '26 Juni 2024',
+                      onTap: () {
+                        Navigator.pushNamed(context, '/maintenance_detail');
+                      },
                     ),
                     MaintenanceScheduleCard(
                       taskName: 'Penggantian Air',
-                      installation: 'Instalasi 3',
-                      dateTime: '27 Juni 2024, 09:00 AM',
+                      date: '09:00 AM',
+                      time: '27 Juni 2024',
+                      onTap: () {
+                        Navigator.pushNamed(context, '/maintenance_detail');
+                      },
                     ),
                   ],
                 ),
@@ -176,22 +91,6 @@ class _FarmerHomeScreenState extends State<FarmerHomeScreen> {
           ),
         ],
       ),
-      // bottomNavigationBar: BottomNavigationBar(
-      //   items: const <BottomNavigationBarItem>[
-      //     BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Beranda'),
-      //     BottomNavigationBarItem(icon: Icon(Icons.history), label: 'Riwayat'),
-      //     BottomNavigationBarItem(icon: Icon(Icons.list), label: 'Tugas Panen'),
-      //     BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profil'),
-      //   ],
-
-      //   type: BottomNavigationBarType.fixed, // Memaksa agar tetap tipe fixed
-
-      //   selectedItemColor: Color.fromARGB(255, 1, 68, 33), // Warna item aktif
-      //   unselectedItemColor: Colors.grey, // Warna item tidak aktif
-      //   backgroundColor: const Color.fromARGB(255, 231, 255, 237),
-      //   currentIndex: _selectedIndex,
-      //   onTap: _onItemTapped,
-      // ),
     );
   }
 }
