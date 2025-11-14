@@ -30,6 +30,7 @@ class _FarmerHarvestScreenState extends State<FarmerHarvestScreen> {
         titleSpacing: 25,
         foregroundColor: Colors.white,
         backgroundColor: Color.fromARGB(255, 1, 68, 33),
+        automaticallyImplyLeading: false,
       ),
       body: Container(
         padding: EdgeInsets.only(top: 15, right: 20, left: 20),

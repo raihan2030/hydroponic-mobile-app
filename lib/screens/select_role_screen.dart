@@ -15,6 +15,7 @@ class SelectRoleScreen extends StatelessWidget{
         ),
         foregroundColor: Colors.white,
         backgroundColor: AppColors.primary,
+        automaticallyImplyLeading: false,
         centerTitle: true,
       ),
       body: Container(

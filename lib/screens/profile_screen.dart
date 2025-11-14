@@ -9,9 +9,10 @@ class ProfileScreen extends StatelessWidget {
       backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text('Profil', style: TextStyle(fontWeight: FontWeight.bold),),
-        titleSpacing: 15,
+        titleSpacing: 25,
         foregroundColor: Colors.white,
         backgroundColor: Color.fromARGB(255, 1, 68, 33),
+        automaticallyImplyLeading: false,
       ),
       body: Container(
         padding: EdgeInsets.only(top: 15, right: 20, left: 20),

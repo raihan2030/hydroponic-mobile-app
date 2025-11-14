@@ -32,6 +32,7 @@ class _FarmerHistoryScreenState extends State<FarmerHistoryScreen> {
         titleSpacing: 25,
         foregroundColor: Colors.white,
         backgroundColor: Color.fromARGB(255, 1, 68, 33),
+        automaticallyImplyLeading: false,
       ),
       body: Container(
         padding: EdgeInsets.all(15),

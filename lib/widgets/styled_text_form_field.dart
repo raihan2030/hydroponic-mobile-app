@@ -1,6 +1,7 @@
 // lib/widgets/styled_text_form_field.dart
 
 import 'package:flutter/material.dart';
+import 'package:hydroponics_app/theme/app_colors.dart';
 
 class StyledTextFormField extends StatelessWidget {
   final String labelText;
@@ -25,8 +26,12 @@ class StyledTextFormField extends StatelessWidget {
     return TextFormField(
       validator: validator,
       obscureText: obscureText,
+      cursorColor: AppColors.primary,
       decoration: InputDecoration(
         labelText: labelText,
+        floatingLabelStyle: TextStyle(
+          color: AppColors.primary
+        ),
         hintText: hintText,
         prefixIcon: Icon(prefixIcon),
         suffixIcon: suffixIcon,
@@ -39,6 +44,13 @@ class StyledTextFormField extends StatelessWidget {
           borderSide: BorderSide(style: BorderStyle.none),
           borderRadius: BorderRadius.all(Radius.circular(15)),
         ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.all(Radius.circular(15)),
+          borderSide: BorderSide(
+            color: AppColors.primary,
+            width: 2.0
+          )
+        )
       ),
     );
   }

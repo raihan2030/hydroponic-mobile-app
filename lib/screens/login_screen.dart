@@ -119,6 +119,17 @@ class _LoginScreenState extends State<LoginScreen> {
           onPressed: () {
             /// do something
           },
+          style: ButtonStyle(
+            overlayColor: WidgetStateProperty.resolveWith(
+              (Set<WidgetState> states) {
+                if (states.contains(WidgetState.pressed)) {
+                  // ignore: deprecated_member_use
+                  return Color.fromARGB(255, 189, 189, 189).withOpacity(0.2);
+                }                
+                return null; 
+              },
+            ),
+          ),
           child: const Text(
             'Lupa Kata Sandi?',
             style: TextStyle(
