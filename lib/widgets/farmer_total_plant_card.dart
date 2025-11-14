@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class FarmerPlantCard extends StatelessWidget {
+class FarmerTotalPlantCard extends StatelessWidget {
   final String header;
   final int plantCount;
   final IconData? plantIcon;
 
-  const FarmerPlantCard({
+  const FarmerTotalPlantCard({
     super.key,
     required this.header,
     required this.plantCount,

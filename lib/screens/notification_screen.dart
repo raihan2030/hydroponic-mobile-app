@@ -1,9 +1,35 @@
 import 'package:flutter/material.dart';
+import 'package:hydroponics_app/models/notification_model.dart';
 import 'package:hydroponics_app/theme/app_colors.dart';
+import 'package:hydroponics_app/widgets/notification_item.dart';
 
-class NotificationScreen extends StatelessWidget{
+class NotificationScreen extends StatefulWidget{
   const NotificationScreen({super.key});
   
+  @override
+  State<NotificationScreen> createState() => _NotificationScreenState();
+}
+
+class _NotificationScreenState extends State<NotificationScreen> {
+  final List<NotificationModel> _data = [
+    NotificationModel(
+      title: 'Penambahan Nutrisi', 
+      date: '25 Juni 2025', 
+      time: '08:00 AM',
+      isRead: true
+    ),
+    NotificationModel(
+      title: 'Penggantian Air', 
+      date: '26 Juni 2025', 
+      time: '09:00 AM',
+    ),
+    NotificationModel(
+      title: 'Pemeriksaan pH Air', 
+      date: '27 Juni 2025', 
+      time: '10:00 AM',
+    ),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,56 +51,15 @@ class NotificationScreen extends StatelessWidget{
       ),
       body: Container(
         padding: EdgeInsets.all(20),
-        child: ListView(
-          children: [
-            _notificationItems('Penambahan Nutrisi', '25 Juni 2024', '08:00 AM'),
-            _notificationItems('Penggantian Air', '26 Juni 2024', '10:00 AM'),
-            _notificationItems('Pemeriksaan pH', '27 Juni 2024', '10:00 AM')
-          ],
+        child: ListView.builder(
+          itemCount: _data.length,
+          itemBuilder: (BuildContext context, int index) {
+            return NotificationItem(
+              notification: _data[index],
+            );
+          },
         ),
       ),
-    );
-  }
-
-  Widget _notificationItems(
-    String title,
-    String date,
-    String time
-  ){
-    return Card(
-      color: Color.fromARGB(255, 236, 236, 236),
-      child: Padding(
-        padding: EdgeInsetsGeometry.symmetric(vertical: 10),
-        child: ListTile(
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                title,
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold
-                ),
-              ),
-              Icon(
-                Icons.circle, 
-                size: 10, 
-                color: AppColors.primary,
-              )
-            ],
-          ),
-          subtitle: Padding(
-            padding: EdgeInsetsGeometry.only(top: 10),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(date),
-                Text(time),
-              ],
-            ),
-          )
-        ),
-      )
     );
   }
 }

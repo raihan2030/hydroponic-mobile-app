@@ -1,7 +1,7 @@
 // lib/screens/login_screen.dart
 
 import 'package:flutter/material.dart';
-import 'package:hydroponics_app/widgets/log_reg_footer.dart';
+import 'package:hydroponics_app/theme/app_colors.dart';
 import 'package:hydroponics_app/widgets/styled_elevated_button.dart';
 import 'package:hydroponics_app/widgets/styled_text_form_field.dart';
 import 'package:hydroponics_app/widgets/log_reg_header.dart';
@@ -63,9 +63,10 @@ class _LoginScreenState extends State<LoginScreen> {
                         if (value == null || value.isEmpty) {
                           return 'Silakan masukkan kata sandi Anda';
                         }
-                        if (value.length < 6) {
-                          return 'Kata sandi harus terdiri dari minimal 6 karakter';
-                        }
+                        // if (value.length < 6) {
+                        //   return 'Kata sandi harus terdiri dari minimal 6 karakter';
+                        // }
+                        // Ini nanti dulu
                         return null;
                       },
                       suffixIcon: IconButton(
@@ -90,22 +91,13 @@ class _LoginScreenState extends State<LoginScreen> {
                       text: 'Masuk',
                       onPressed: () {
                         if (_formKey.currentState?.validate() ?? false) {
-                          /// do something
+                          Navigator.pushNamed(context, '/farmer_navigation');
                         }
                       },
                       foregroundColor: Colors.white,
-                      backgroundColor: const Color.fromARGB(255, 116, 116, 116),
+                      backgroundColor: AppColors.primary,
                     ),
-                    SizedBox(height: 100),
-
-                    // Footer
-                    LogRegFooter(
-                      label: "Belum punya akun?", 
-                      buttonText: "Daftar", 
-                      onPressed: () {
-                        Navigator.pushNamed(context, '/register');
-                      },
-                    ),
+                    SizedBox(height: 100)                   
                   ],
                 ),
               ),

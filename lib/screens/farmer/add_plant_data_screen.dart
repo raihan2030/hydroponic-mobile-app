@@ -3,14 +3,14 @@ import 'package:hydroponics_app/theme/app_colors.dart';
 import 'package:hydroponics_app/widgets/styled_date_picker_field.dart';
 import 'package:hydroponics_app/widgets/styled_elevated_button.dart';
 
-class AddPlantData extends StatefulWidget{
-  const AddPlantData({super.key});
+class AddPlantDataScreen extends StatefulWidget{
+  const AddPlantDataScreen({super.key});
 
   @override
-  State<AddPlantData> createState() => _AddPlantDataState();
+  State<AddPlantDataScreen> createState() => _AddPlantDataScreenState();
 }
 
-class _AddPlantDataState extends State<AddPlantData>{
+class _AddPlantDataScreenState extends State<AddPlantDataScreen>{
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override

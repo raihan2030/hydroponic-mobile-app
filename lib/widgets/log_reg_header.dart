@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hydroponics_app/theme/app_colors.dart';
 
 class LogRegHeader extends StatelessWidget {
   final String title;
@@ -22,11 +23,12 @@ class LogRegHeader extends StatelessWidget {
               fontSize: 40,
               fontWeight: FontWeight.w900,
               fontFamily: 'Roboto',
+              color: AppColors.primary
             ),
           ),
         ),
         Padding(
-          padding: const EdgeInsets.only(top: 35.0, bottom: 13.0),
+          padding: const EdgeInsets.only(top: 50.0, bottom: 13.0),
           child: Text(
             subtitle,
             style: TextStyle(

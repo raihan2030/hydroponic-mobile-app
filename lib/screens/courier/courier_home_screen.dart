@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:hydroponics_app/theme/app_colors.dart';
+import 'package:hydroponics_app/models/delivery_assigntment_model.dart';
+import 'package:hydroponics_app/models/user_model.dart';
+import 'package:hydroponics_app/widgets/delivery_assignment_card.dart';
 import 'package:hydroponics_app/widgets/home_app_bar.dart';
 
 class CourierHomeScreen extends StatefulWidget{
@@ -10,14 +12,15 @@ class CourierHomeScreen extends StatefulWidget{
 }
 
 class _CourierHomeScreenState extends State<CourierHomeScreen> {
-  final List<DeliveryTaskField> _data = List<DeliveryTaskField>.generate(5, 
-    (index) => DeliveryTaskField(
+  final List<DeliveryAssigntmentModel> _data = List<DeliveryAssigntmentModel>.generate(5, 
+    (index) => DeliveryAssigntmentModel(
       customerName: 'Muhammad Fulan', 
       address: 'Jl. Sungai Lulut', 
       date: '0${index + 1} Juni 2025', 
-      time: '1${index + 1}:00 AM'
-      )
-    );
+      time: '1${index + 1}:00 AM', 
+      transaction: []
+    )
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -26,11 +29,13 @@ class _CourierHomeScreenState extends State<CourierHomeScreen> {
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(80),
         child: HomeAppBar(
-          username: 'Naufal Elyzar', 
-          role: 'Kurir', 
-          onNotificationTap: () {
-            Navigator.pushNamed(context, '/notification');
-          },
+          user: UserModel(
+            username: 'Naufal Elyzar', 
+            role: 'Kurir',
+            onNotificationTap: () {
+              Navigator.pushNamed(context, '/notification');
+            },
+          ),
         ),
       ),
       body: Container(
@@ -51,59 +56,16 @@ class _CourierHomeScreenState extends State<CourierHomeScreen> {
               ListView.separated(
                 itemCount: _data.length,
                 itemBuilder: (BuildContext context, int index) {
-                  return Card(
-                    color: AppColors.primary,
-                    child: InkWell(
-                      onTap: () {
-                        Navigator.pushNamed(context, '/courier_delivery_detail');
-                      },
-                      child: Padding(
-                        padding: EdgeInsetsGeometry.symmetric(vertical: 15, horizontal: 20),
-                        child: Column(
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(_data[index].customerName, style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18),),
-                                Text(_data[index].date, style: TextStyle(color: Colors.white),)
-                              ],
-                            ),
-                            SizedBox(height: 5,),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(_data[index].address, style: TextStyle(color: Colors.white),),
-                                Text(_data[index].time, style: TextStyle(color: Colors.white),)
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                    )                     
-                  );
+                  return DeliveryAssignmentCard(assignment: _data[index]);
                 }, 
                 separatorBuilder: (BuildContext context, int index) { 
-                  return SizedBox(height: 10,);
+                  return SizedBox(height: 7,);
                 },
               ),
-            )            
+            )
           ],
         ),
       ),
     );
   }
-}
-
-class DeliveryTaskField {
-  final String customerName;
-  final String address;
-  final String date;
-  final String time;
-  
-  const DeliveryTaskField({
-    required this.customerName, 
-    required this.address, 
-    required this.date, 
-    required this.time
-  });
 }

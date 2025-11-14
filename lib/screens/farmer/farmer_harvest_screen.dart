@@ -1,8 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:hydroponics_app/widgets/styled_elevated_button.dart';
+import 'package:hydroponics_app/models/harvest_assignment_model.dart';
+import 'package:hydroponics_app/widgets/harvest_assignment_card.dart';
 
-class FarmerHarvestScreen extends StatelessWidget {
+class FarmerHarvestScreen extends StatefulWidget {
   const FarmerHarvestScreen({super.key});
+
+  @override
+  State<FarmerHarvestScreen> createState() => _FarmerHarvestScreenState();
+}
+
+class _FarmerHarvestScreenState extends State<FarmerHarvestScreen> {
+  final List<HarvestAssignmentModel> _data = List<HarvestAssignmentModel>.generate(5, (int index) =>
+    HarvestAssignmentModel(
+      customerName: 'Nama Pelanggan', 
+      plantName: 'Selada', 
+      plantQty: 20 + index, 
+      address: 'Jl. Martapura Lama, Komplek Putra Gemilang Raya', 
+      date: '0${index + 1} November 2025', 
+      time: '08:00 AM'
+    )
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -19,50 +36,7 @@ class FarmerHarvestScreen extends StatelessWidget {
         child: ListView.builder(
           itemCount: 5,
           itemBuilder: (context, index) {
-            return Card(
-              margin: const EdgeInsets.symmetric(vertical: 6.0, horizontal: 0.0),
-              color: const Color.fromARGB(255, 1, 68, 33),
-              
-              child: Padding(padding: EdgeInsetsGeometry.only(top: 10, bottom: 10),
-                child: 
-                  ListTile(
-                    textColor: Colors.white,
-                    title: Text('Nama Pelanggan', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
-                    subtitle: Column(
-                      spacing: 15,
-                      children: [
-                        SizedBox(height: 7,),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text('Selada', style: TextStyle(fontSize: 18),),
-                            Text('20 pcs', style: TextStyle(fontSize: 18),)
-                          ],
-                        ),
-                        Text('Jl. Martapura Lama, Komplek Putra Gemilang Raya', 
-                          style: TextStyle(fontSize: 16), 
-                          textAlign: TextAlign.justify,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text('2 November 2024', style: TextStyle(fontSize: 16),),
-                            Text('08:00 AM', style: TextStyle(fontSize: 16),)
-                          ],
-                        ),
-                        StyledElevatedButton(
-                          text: 'Sudah di panen', 
-                          foregroundColor: Color.fromARGB(255, 1, 68, 33),
-                          onPressed: () {
-                            // actions
-                          }
-                        )
-                      ],
-                    )
-                  ),
-              ),
-              
-            );
+            return HarvestAssignmentCard(assignment: _data[index]);
           },
         ),
       ),

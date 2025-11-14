@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:hydroponics_app/models/user_model.dart';
 
 class HomeAppBar extends StatelessWidget{
-  final String username;
-  final String role;
-  final VoidCallback onNotificationTap;
+  final UserModel user;
 
   const HomeAppBar({
     super.key, 
-    required this.username, 
-    required this.role, 
-    required this.onNotificationTap
+    required this.user 
   });
   
   @override
@@ -23,10 +20,10 @@ class HomeAppBar extends StatelessWidget{
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            username,
+            user.username,
             style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
-          Text(role, style: TextStyle(fontSize: 14)),
+          Text(user.role, style: TextStyle(fontSize: 14)),
         ],
       ),
       leading: Padding(
@@ -53,14 +50,13 @@ class HomeAppBar extends StatelessWidget{
             bottom: 15.0,
           ),
           child: InkWell(
-            onTap: onNotificationTap,
+            onTap: user.onNotificationTap,
             borderRadius: BorderRadius.circular(10),
             child: Container(
               margin: const EdgeInsets.all(0),
               alignment: Alignment.center,
               decoration: BoxDecoration(
                 color: Colors.transparent,
-                // borderRadius: BorderRadius.circular(7),
               ),
               child: const Icon(
                 Icons.notifications,

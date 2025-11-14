@@ -9,7 +9,7 @@ class ProfileScreen extends StatelessWidget {
       backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text('Profil', style: TextStyle(fontWeight: FontWeight.bold),),
-        titleSpacing: 25,
+        titleSpacing: 15,
         foregroundColor: Colors.white,
         backgroundColor: Color.fromARGB(255, 1, 68, 33),
       ),
@@ -74,7 +74,7 @@ class ProfileScreen extends StatelessWidget {
               leading: Icon(Icons.logout, size: 25,),
               title: Text('Keluar'),
               onTap: () {
-                // actions
+                Navigator.pushNamed(context, '/select_role');
               },
             ),
             Divider()

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hydroponics_app/screens/profile_screen.dart';
 import 'package:hydroponics_app/theme/app_colors.dart';
-import 'package:hydroponics_app/widgets/home_app_bar.dart';
 
 class LogisticNavigation extends StatefulWidget {
   const LogisticNavigation({super.key});
