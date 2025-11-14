@@ -20,7 +20,7 @@ class _FarmerHomeScreenState extends State<FarmerHomeScreen> {
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(80),
         child: HomeAppBar(
-          username: 'Muhammad Fulan', 
+          username: 'Muhammad Raihan', 
           role: 'Petani Selada', 
           onNotificationTap: () {
             Navigator.pushNamed(context, '/notification');
