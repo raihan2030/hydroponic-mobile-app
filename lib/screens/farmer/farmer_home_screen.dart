@@ -61,48 +61,50 @@ class _FarmerHomeScreenState extends State<FarmerHomeScreen> {
         ),
       ),
 
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            padding: EdgeInsets.all(15),
-            color: Color.fromARGB(255, 1, 68, 33),
-            child: 
-              FarmerTotalPlantCard(header: 'Total Bibit Ditanam', plantCount: 67),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                StyledElevatedButton(
-                  text: 'Tambah Data Tanaman ',
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/add_plant_data');
-                  },
-                  foregroundColor: Colors.white,
-                  backgroundColor: Color.fromARGB(255, 1, 68, 33),
-                  icon: Icons.add,
-                ),
-                SizedBox(height: 15),
-                Text(
-                  'Daftar Jadwal',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                ),
-                SizedBox(height: 10),
-                ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: _data.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return MaintenanceScheduleCard(
-                      maintenance: _data[index],
-                    );
-                  },
-                ),
-              ],
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              padding: EdgeInsets.all(15),
+              color: Color.fromARGB(255, 1, 68, 33),
+              child: 
+                FarmerTotalPlantCard(header: 'Total Bibit Ditanam', plantCount: 67),
             ),
-          ),
-        ],
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  StyledElevatedButton(
+                    text: 'Tambah Data Tanaman ',
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/add_plant_data');
+                    },
+                    foregroundColor: Colors.white,
+                    backgroundColor: Color.fromARGB(255, 1, 68, 33),
+                    icon: Icons.add,
+                  ),
+                  SizedBox(height: 15),
+                  Text(
+                    'Daftar Jadwal',
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(height: 10),
+                  ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: _data.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return MaintenanceScheduleCard(
+                        maintenance: _data[index],
+                      );
+                    },
+                  ),
+                ],
+              ),
+            ),
+          ],
+        )
       ),
     );
   }

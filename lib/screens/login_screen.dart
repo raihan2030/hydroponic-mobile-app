@@ -24,81 +24,83 @@ class _LoginScreenState extends State<LoginScreen> {
       body: Form(
         key: _formKey,
         child: Center(
-          child: Card(
-            color: Colors.white,
-            elevation: 0.0,
-            child: Container(
-              padding: const EdgeInsets.all(10.0),
-              constraints: const BoxConstraints(maxWidth: 350),
-              child: SingleChildScrollView(
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    // Header
-                    LogRegHeader(title: "MASUK", subtitle: "Selamat Datang"),
-                    _gap(),
+          child: SingleChildScrollView(
+            child: Card(
+              color: Colors.white,
+              elevation: 0.0,
+              child: Container(
+                padding: const EdgeInsets.all(10.0),
+                constraints: const BoxConstraints(maxWidth: 350),
+                child: SingleChildScrollView(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      // Header
+                      LogRegHeader(title: "MASUK", subtitle: "Selamat Datang"),
+                      _gap(),
 
-                    // Username Field
-                    StyledTextFormField(
-                      labelText: 'Nama Pengguna',
-                      hintText: 'Masukkan nama pengguna Anda',
-                      prefixIcon: Icons.person,
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Silakan masukkan nama pengguna Anda';
-                        }
-                        return null;
-                      },
-                    ),
-                    _gap(),
-
-                    // Password Field
-                    StyledTextFormField(
-                      labelText: 'Kata Sandi',
-                      hintText: 'Masukkan kata sandi Anda',
-                      prefixIcon: Icons.lock_outline_rounded,
-                      obscureText: !_isPasswordVisible,
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Silakan masukkan kata sandi Anda';
-                        }
-                        // if (value.length < 6) {
-                        //   return 'Kata sandi harus terdiri dari minimal 6 karakter';
-                        // }
-                        // Ini nanti dulu
-                        return null;
-                      },
-                      suffixIcon: IconButton(
-                        icon: Icon(
-                          _isPasswordVisible
-                              ? Icons.visibility_off
-                              : Icons.visibility,
-                        ),
-                        onPressed: () {
-                          setState(() {
-                            _isPasswordVisible = !_isPasswordVisible;
-                          });
+                      // Username Field
+                      StyledTextFormField(
+                        labelText: 'Nama Pengguna',
+                        hintText: 'Masukkan nama pengguna Anda',
+                        prefixIcon: Icons.person,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Silakan masukkan nama pengguna Anda';
+                          }
+                          return null;
                         },
                       ),
-                    ),
+                      _gap(),
 
-                    _buildForgotPasswordButton(),
-                    _gap(),
+                      // Password Field
+                      StyledTextFormField(
+                        labelText: 'Kata Sandi',
+                        hintText: 'Masukkan kata sandi Anda',
+                        prefixIcon: Icons.lock_outline_rounded,
+                        obscureText: !_isPasswordVisible,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Silakan masukkan kata sandi Anda';
+                          }
+                          // if (value.length < 6) {
+                          //   return 'Kata sandi harus terdiri dari minimal 6 karakter';
+                          // }
+                          // Ini nanti dulu
+                          return null;
+                        },
+                        suffixIcon: IconButton(
+                          icon: Icon(
+                            _isPasswordVisible
+                                ? Icons.visibility_off
+                                : Icons.visibility,
+                          ),
+                          onPressed: () {
+                            setState(() {
+                              _isPasswordVisible = !_isPasswordVisible;
+                            });
+                          },
+                        ),
+                      ),
 
-                    // Login Button
-                    StyledElevatedButton(
-                      text: 'Masuk',
-                      onPressed: () {
-                        if (_formKey.currentState?.validate() ?? false) {
-                          Navigator.pushNamed(context, '/farmer_navigation');
-                        }
-                      },
-                      foregroundColor: Colors.white,
-                      backgroundColor: AppColors.primary,
-                    ),
-                    SizedBox(height: 100)                   
-                  ],
+                      _buildForgotPasswordButton(),
+                      _gap(),
+
+                      // Login Button
+                      StyledElevatedButton(
+                        text: 'Masuk',
+                        onPressed: () {
+                          if (_formKey.currentState?.validate() ?? false) {
+                            Navigator.pushNamed(context, '/farmer_navigation');
+                          }
+                        },
+                        foregroundColor: Colors.white,
+                        backgroundColor: AppColors.primary,
+                      ),
+                      SizedBox(height: 100)             
+                    ],
+                  ),
                 ),
               ),
             ),

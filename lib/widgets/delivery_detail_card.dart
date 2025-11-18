@@ -23,7 +23,7 @@ class DeliveryDetailCard extends StatelessWidget{
         child: ListTile(
           textColor: Colors.white,
           title: Text(
-            assignment.customerName,
+            assignment.transaction.customerName,
             textAlign: TextAlign.center,
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
           ),
@@ -32,11 +32,11 @@ class DeliveryDetailCard extends StatelessWidget{
             SizedBox(height: 25,),
             
             Column(
-              children: assignment.transaction.map((transaction) {
+              children: assignment.transaction.plantQuantity.map((transaction) {
                 return Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(transaction.plantName),
+                    Text(transaction.plant.plantName),
                     Text('${transaction.quantity} pcs'),
                   ],
                 );
@@ -47,13 +47,13 @@ class DeliveryDetailCard extends StatelessWidget{
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(assignment.date),
-                Text(assignment.time),
+                Text(assignment.transaction.date),
+                Text(assignment.transaction.time),
               ],
             ),
             SizedBox(height: 20,),
 
-            Text(assignment.address, textAlign: TextAlign.justify,),
+            Text(assignment.transaction.address, textAlign: TextAlign.justify,),
             SizedBox(height: 20,),
 
             Row(

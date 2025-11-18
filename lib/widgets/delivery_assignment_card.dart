@@ -14,6 +14,7 @@ class DeliveryAssignmentCard extends StatelessWidget{
   Widget build(BuildContext context) {
     return Card(
       color: AppColors.primary,
+      margin: EdgeInsets.symmetric(horizontal: 10),
       child: InkWell(
         onTap: () {
           Navigator.pushNamed(context, '/courier_delivery_detail');
@@ -25,16 +26,16 @@ class DeliveryAssignmentCard extends StatelessWidget{
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(assignment.customerName, style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18),),
-                  Text(assignment.date, style: TextStyle(color: Colors.white),)
+                  Text(assignment.transaction.customerName, style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18),),
+                  Text(assignment.transaction.customerName, style: TextStyle(color: Colors.white),)
                 ],
               ),
               SizedBox(height: 5,),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(assignment.address, style: TextStyle(color: Colors.white),),
-                  Text(assignment.time, style: TextStyle(color: Colors.white),)
+                  Text(assignment.transaction.address, style: TextStyle(color: Colors.white),),
+                  Text(assignment.transaction.time, style: TextStyle(color: Colors.white),)
                 ],
               ),
             ],

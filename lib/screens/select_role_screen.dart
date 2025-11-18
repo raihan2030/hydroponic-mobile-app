@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hydroponics_app/theme/app_colors.dart';
-import 'package:hydroponics_app/widgets/styled_elevated_button.dart';
+import 'package:hydroponics_app/widgets/rounded_border_button.dart';
 
 class SelectRoleScreen extends StatelessWidget{
   const SelectRoleScreen({super.key});
@@ -22,31 +22,38 @@ class SelectRoleScreen extends StatelessWidget{
         padding: EdgeInsets.all(20),
         child: SingleChildScrollView(
           child: Column(
-            spacing: 7,
+            spacing: 10,
             children: [
-              StyledElevatedButton(
+              RoundedBorderButton(
                 text: 'Halaman Petani', 
                 onPressed: () {
                   Navigator.pushNamed(context, '/farmer_navigation');
-                }
+                },
+                textColor: Colors.white,
+                backgroundColor: AppColors.primary,
               ),
-              StyledElevatedButton(
+              RoundedBorderButton(
                 text: 'Halaman Kurir', 
                 onPressed: () {
                   Navigator.pushNamed(context, '/courier_navigation');
-                }
+                },
+                textColor: Colors.white,
+                backgroundColor: AppColors.primary,
               ),
-              StyledElevatedButton(
+              RoundedBorderButton(
                 text: 'Halaman Staf Logistik', 
                 onPressed: () {
-
-                }
+                  // Navigator.pushNamed(context, '/admin_navigation');
+                },
+                
               ),
-              StyledElevatedButton(
+              RoundedBorderButton(
                 text: 'Halaman Admin', 
                 onPressed: () {
-
-                }
+                  Navigator.pushNamed(context, '/admin_navigation');
+                },
+                textColor: Colors.white,
+                backgroundColor: AppColors.primary,
               ),
             ],
           ),

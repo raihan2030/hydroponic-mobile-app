@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hydroponics_app/widgets/log_reg_footer.dart';
+import 'package:hydroponics_app/theme/app_colors.dart';
 import 'package:hydroponics_app/widgets/log_reg_header.dart';
 import 'package:hydroponics_app/widgets/styled_elevated_button.dart';
 import 'package:hydroponics_app/widgets/styled_text_form_field.dart';
@@ -44,19 +44,18 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SizedBox(height: 50),
                     // Header
-                    LogRegHeader(title: "DAFTAR", subtitle: "Buat akun Anda"),
+                    LogRegHeader(title: "BUAT AKUN", subtitle: "Buat akun karyawan"),
                     _gap(),
 
                     // Username Field
                     StyledTextFormField(
                       labelText: 'Nama Pengguna',
-                      hintText: 'Masukkan nama pengguna Anda',
+                      hintText: 'Masukkan nama pengguna',
                       prefixIcon: Icons.person,
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return 'Silakan masukkan nama pengguna Anda';
+                          return 'Silakan masukkan nama pengguna';
                         }
                         return null;
                       },
@@ -65,7 +64,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
                     // Role Dropdown Field
                     StyledDropdownButtonFormField<String>(
-                      hintText: 'Pilih Posisi Anda',
+                      hintText: 'Pilih Posisi',
                       prefixIcon: Icons.card_travel,
                       value: _selectedCategory,
                       items: _categories.map((String category) {
@@ -81,7 +80,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       },
                       validator: (value) {
                         if (value == null) {
-                          return 'Silakan pilih posisi Anda';
+                          return 'Silakan pilih posisi karyawan';
                         }
                         return null;
                       },
@@ -91,12 +90,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     // Password Field
                     StyledTextFormField(
                       labelText: 'Kata Sandi',
-                      hintText: 'Masukkan kata sandi Anda',
+                      hintText: 'Masukkan kata sandi',
                       prefixIcon: Icons.lock_outline_rounded,
                       obscureText: !_isPasswordVisible,
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return 'Silakan masukkan kata sandi Anda';
+                          return 'Silakan masukkan kata sandi';
                         }
                         return null;
                       },
@@ -118,12 +117,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     // Confirm Password Field
                     StyledTextFormField(
                       labelText: 'Konfirmasi Kata Sandi',
-                      hintText: 'Masukkan kembali kata sandi Anda',
+                      hintText: 'Masukkan kembali kata sandi',
                       prefixIcon: Icons.lock_outline_rounded,
                       obscureText: !_isConfirmPasswordVisible,
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return 'Silakan konfirmasi kata sandi Anda';
+                          return 'Silakan konfirmasi kata sandi';
                         }
                         return null;
                       },
@@ -147,21 +146,23 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     StyledElevatedButton(
                       onPressed: () {
                         if (_formKey.currentState?.validate() ?? false) {
-                          /// do something
+                          Navigator.pushNamed(context, '/login');
                         }
                       },
-                      text: 'Daftar',
+                      text: 'Tambah Akun',
                       foregroundColor: Colors.white,
-                      backgroundColor: const Color.fromARGB(255, 116, 116, 116),
+                      backgroundColor: AppColors.primary,
                     ),
-                    SizedBox(height: 80),
+                    SizedBox(height: 10,),
 
-                    LogRegFooter(
-                      label: "Sudah punya akun?", 
-                      buttonText: "Masuk", 
+                    // Back Button
+                    StyledElevatedButton(
                       onPressed: () {
-                        Navigator.pushNamed(context, '/login');
+                        Navigator.pop(context);                        
                       },
+                      text: 'Kembali',
+                      foregroundColor: AppColors.primary,
+                      backgroundColor: const Color.fromARGB(255, 233, 233, 233),
                     ),
                   ],
                 ),

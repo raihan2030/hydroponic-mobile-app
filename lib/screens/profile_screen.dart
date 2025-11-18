@@ -14,72 +14,75 @@ class ProfileScreen extends StatelessWidget {
         backgroundColor: Color.fromARGB(255, 1, 68, 33),
         automaticallyImplyLeading: false,
       ),
-      body: Container(
-        padding: EdgeInsets.only(top: 15, right: 20, left: 20),
-        child: ListView(
-          children: [
-            Center(
-              heightFactor: 2,
-              child: 
-              Stack(
-                children: [
-                  Icon(Icons.account_circle, 
-                    size: 150,
-                    color: Color.fromARGB(255, 1, 68, 33),
-                  ),
-                  Positioned(
-                    bottom: 10,
-                    right: 10,
-                    child: Container(
-                      width: 40,
-                      height: 40,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        border: BoxBorder.all(
-                          color: Color.fromARGB(255, 1, 68, 33),
-                          width: 2
+      body: 
+      SingleChildScrollView(
+        child: Container(
+          padding: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+          child: Column(
+            children: [
+              Center(
+                heightFactor: 2,
+                child: 
+                Stack(
+                  children: [
+                    Icon(Icons.account_circle, 
+                      size: 150,
+                      color: Color.fromARGB(255, 1, 68, 33),
+                    ),
+                    Positioned(
+                      bottom: 10,
+                      right: 10,
+                      child: Container(
+                        width: 40,
+                        height: 40,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          border: BoxBorder.all(
+                            color: Color.fromARGB(255, 1, 68, 33),
+                            width: 2
+                          ),
+                          borderRadius: BorderRadius.all(Radius.circular(20))
                         ),
-                        borderRadius: BorderRadius.all(Radius.circular(20))
-                      ),
-                      child: IconButton(
-                        onPressed: () {
-                          // actions
-                        }, 
-                        icon: Icon(Icons.edit, color: Color.fromARGB(255, 1, 68, 33),),
-                        iconSize: 21,
+                        child: IconButton(
+                          onPressed: () {
+                            // actions
+                          }, 
+                          icon: Icon(Icons.edit, color: Color.fromARGB(255, 1, 68, 33),),
+                          iconSize: 21,
+                        ),
                       ),
                     ),
-                  ),
-                ],
-              ) 
-            ),
-            ListTile(
-              leading: Icon(Icons.settings, size: 25,),
-              title: Text('Pengaturan'),
-              onTap: () {
-                // actions
-              },
-            ),
-            Divider(),
-            ListTile(
-              leading: Icon(Icons.headset_mic, size: 25,),
-              title: Text('Bantuan & dukungan'),
-              onTap: () {
-                // actions
-              },
-            ),
-            Divider(),
-            ListTile(
-              textColor: Colors.red,
-              iconColor: Colors.red,
-              leading: Icon(Icons.logout, size: 25,),
-              title: Text('Keluar'),
-              onTap: () {
-                Navigator.pushNamed(context, '/select_role');
-              },
-            ),
-            Divider()
-          ],
+                  ],
+                ) 
+              ),
+              ListTile(
+                leading: Icon(Icons.settings, size: 25,),
+                title: Text('Pengaturan'),
+                onTap: () {
+                  // actions
+                },
+              ),
+              Divider(),
+              ListTile(
+                leading: Icon(Icons.headset_mic, size: 25,),
+                title: Text('Bantuan & dukungan'),
+                onTap: () {
+                  // actions
+                },
+              ),
+              Divider(),
+              ListTile(
+                textColor: Colors.red,
+                iconColor: Colors.red,
+                leading: Icon(Icons.logout, size: 25,),
+                title: Text('Keluar'),
+                onTap: () {
+                  Navigator.pushNamed(context, '/select_role');
+                },
+              ),
+              Divider()
+            ]
+          ),
         ),
       ),
     );

@@ -34,17 +34,23 @@ class _FarmerHistoryScreenState extends State<FarmerHistoryScreen> {
         backgroundColor: Color.fromARGB(255, 1, 68, 33),
         automaticallyImplyLeading: false,
       ),
-      body: Container(
-        padding: EdgeInsets.all(15),
-        child: ListView.builder(
-          itemCount: _data.length,
-          itemBuilder: (BuildContext context, int index) {
-            return FarmerHistoryExpansionItem(
-              history: _data[index],
-            );
-          }
-        ),
+      body: LayoutBuilder(
+        builder: (BuildContext context, BoxConstraints constraints) {
+          return Container(
+            padding: EdgeInsets.all(15),
+            child: ListView.builder(
+              itemCount: _data.length,
+              itemBuilder: (BuildContext context, int index) {
+                return FarmerHistoryExpansionItem(
+                  history: _data[index],
+                  screenWidth: constraints.maxWidth,
+                );
+              }
+            ),
+          );
+        }
       )
+      
     );
   }
 }

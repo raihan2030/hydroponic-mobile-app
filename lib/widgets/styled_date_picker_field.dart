@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hydroponics_app/theme/app_colors.dart';
 import 'package:intl/intl.dart';
 
 class StyledDatePickerField extends StatefulWidget {
@@ -67,6 +68,13 @@ class _StyledDatePickerFieldState extends State<StyledDatePickerField> {
             borderSide: BorderSide(style: BorderStyle.none),
             borderRadius: BorderRadius.all(Radius.circular(15)),
           ),
+          focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.all(Radius.circular(15)),
+          borderSide: BorderSide(
+            color: AppColors.primary,
+            width: 2.0
+          )
+        )
         ),
       );
   }
