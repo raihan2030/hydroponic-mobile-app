@@ -164,6 +164,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       foregroundColor: AppColors.primary,
                       backgroundColor: const Color.fromARGB(255, 233, 233, 233),
                     ),
+                    SizedBox(height: 80,)
                   ],
                 ),
               ),

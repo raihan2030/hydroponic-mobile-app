@@ -10,6 +10,8 @@ import 'package:hydroponics_app/screens/farmer/add_plant_data_screen.dart';
 import 'package:hydroponics_app/screens/farmer/maintenance_detail_screen.dart';
 import 'package:hydroponics_app/screens/farmer/farmer_navigation.dart';
 import 'package:hydroponics_app/screens/login_screen.dart';
+import 'package:hydroponics_app/screens/logistic/logistic_assignment_detail_screen.dart';
+import 'package:hydroponics_app/screens/logistic/logistic_navigation.dart';
 import 'package:hydroponics_app/screens/notification_screen.dart';
 import 'package:hydroponics_app/screens/register_screen.dart';
 import 'package:hydroponics_app/screens/select_role_screen.dart';
@@ -44,7 +46,9 @@ class HydroponicApp extends StatelessWidget {
         '/add_edit_transaction': (context) => const AddEditTransactionScreen(),
         '/employee_account_list': (context) => const EmployeeAccountListScreen(),
         '/transaction_status': (context) => const TransactionStatusScreen(),
-        '/plant_status': (context) => const PlantStatusScreen()
+        '/plant_status': (context) => const PlantStatusScreen(),
+        '/logistic_navigation': (context) => const LogisticNavigation(),
+        '/logistic_assignment_detail': (context) => const LogisticAssignmentDetailScreen()
       },
     );
   }

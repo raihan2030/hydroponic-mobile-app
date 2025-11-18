@@ -4,10 +4,12 @@ import 'package:hydroponics_app/theme/app_colors.dart';
 
 class DeliveryAssignmentCard extends StatelessWidget{
   final DeliveryAssigntmentModel assignment;
+  final VoidCallback onTap;
 
   const DeliveryAssignmentCard({
     super.key, 
-    required this.assignment
+    required this.assignment,
+    required this.onTap
   });
 
   @override
@@ -16,9 +18,7 @@ class DeliveryAssignmentCard extends StatelessWidget{
       color: AppColors.primary,
       margin: EdgeInsets.symmetric(horizontal: 10),
       child: InkWell(
-        onTap: () {
-          Navigator.pushNamed(context, '/courier_delivery_detail');
-        },
+        onTap: onTap,
         child: Padding(
           padding: EdgeInsetsGeometry.symmetric(vertical: 15, horizontal: 20),
           child: Column(
@@ -27,7 +27,7 @@ class DeliveryAssignmentCard extends StatelessWidget{
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(assignment.transaction.customerName, style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18),),
-                  Text(assignment.transaction.customerName, style: TextStyle(color: Colors.white),)
+                  Text(assignment.transaction.date, style: TextStyle(color: Colors.white),)
                 ],
               ),
               SizedBox(height: 5,),

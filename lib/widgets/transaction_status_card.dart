@@ -138,16 +138,16 @@ class _TransactionStatusCardState extends State<TransactionStatusCard> {
                 );
               }).toList(),
               onChanged: (String? newValue) {
-                  setState(() {
-                    _selectedPaymentStatus = newValue;
-                  });
-                },
-                validator: (value) {
-                  if (value == null) {
-                    return 'Silakan pilih status pembayaran';
-                  }
-                  return null;
-                },
+                setState(() {
+                  _selectedPaymentStatus = newValue;
+                });
+              },
+              validator: (value) {
+                if (value == null) {
+                  return 'Silakan pilih status pembayaran';
+                }
+                return null;
+              },
             ),
             SizedBox(height: 15,),
 

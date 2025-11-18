@@ -96,7 +96,7 @@ class FarmerHistoryExpansionItem extends StatelessWidget {
               text: 'Hapus Data', 
               onPressed: history.onDeleteAll,
               foregroundColor: Colors.white,
-              backgroundColor: Colors.red[700],
+              backgroundColor: Colors.red[500],
             ),
           ],
         ),

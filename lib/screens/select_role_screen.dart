@@ -43,9 +43,10 @@ class SelectRoleScreen extends StatelessWidget{
               RoundedBorderButton(
                 text: 'Halaman Staf Logistik', 
                 onPressed: () {
-                  // Navigator.pushNamed(context, '/admin_navigation');
+                  Navigator.pushNamed(context, '/logistic_navigation');
                 },
-                
+                textColor: Colors.white,
+                backgroundColor: AppColors.primary,
               ),
               RoundedBorderButton(
                 text: 'Halaman Admin', 

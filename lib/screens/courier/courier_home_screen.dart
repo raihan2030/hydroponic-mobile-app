@@ -68,7 +68,12 @@ class _CourierHomeScreenState extends State<CourierHomeScreen> {
                   physics: NeverScrollableScrollPhysics(),
                   itemCount: _data.length,
                   itemBuilder: (BuildContext context, int index) {
-                    return DeliveryAssignmentCard(assignment: _data[index]);
+                    return DeliveryAssignmentCard(
+                      assignment: _data[index], 
+                      onTap: () {
+                        Navigator.pushNamed(context, '/courier_delivery_detail');
+                      },
+                    );
                   }, 
                   separatorBuilder: (BuildContext context, int index) { 
                     return SizedBox(height: 7,);

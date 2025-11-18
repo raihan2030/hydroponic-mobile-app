@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hydroponics_app/theme/app_colors.dart';
+import 'package:hydroponics_app/widgets/no_leading_text_form_field.dart';
 import 'package:hydroponics_app/widgets/styled_date_picker_field.dart';
 import 'package:hydroponics_app/widgets/styled_elevated_button.dart';
 
@@ -43,27 +44,15 @@ class _AddPlantDataScreenState extends State<AddPlantDataScreen>{
                 ),
               ),
               _gap(10),
-              TextFormField(
-                keyboardType: TextInputType.number,
+              NoLeadingTextFormField(
+                hintText: 'Masukkan jumlah bibit', 
+                inputType: TextInputType.number,
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Silakan masukkan jumlah bibit yang Anda tanam';
                   }
                   return null;
                 },
-                obscureText: false,
-                decoration: InputDecoration(
-                  hintText: 'Masukkan jumlah bibit',
-                  filled: true,
-                  fillColor: Color.fromARGB(255, 236, 236, 236),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(15)),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(style: BorderStyle.none),
-                    borderRadius: BorderRadius.all(Radius.circular(15)),
-                  ),
-                ),
               ),
               _gap(15),
               Text('Tanggal Tanam:',

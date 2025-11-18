@@ -44,7 +44,7 @@ class HarvestAssignmentCard extends StatelessWidget{
                   ],
                 ),
                 StyledElevatedButton(
-                  text: 'Sudah di panen', 
+                  text: 'Tandai Sudah Dipanen', 
                   foregroundColor: Color.fromARGB(255, 1, 68, 33),
                   onPressed: () {
                     // actions

@@ -5,19 +5,20 @@ import 'package:hydroponics_app/models/plant_quantity_model.dart';
 import 'package:hydroponics_app/models/transaction_model.dart';
 import 'package:hydroponics_app/models/user_model.dart';
 import 'package:hydroponics_app/theme/app_colors.dart';
-import 'package:hydroponics_app/widgets/delivery_detail_card.dart';
+import 'package:hydroponics_app/widgets/logistic_delivery_detail_card.dart';
 
-class CourierDeliveryDetailScreen extends StatefulWidget{
-  const CourierDeliveryDetailScreen({super.key});
+class LogisticAssignmentDetailScreen extends StatefulWidget {
+  const LogisticAssignmentDetailScreen({super.key});
 
   @override
-  State<CourierDeliveryDetailScreen> createState() => _StateCourierDeliveryDetailScreen();
+  State<LogisticAssignmentDetailScreen> createState() => _LogisticAssignmentDetailScreenState();
 }
 
-class _StateCourierDeliveryDetailScreen extends State<CourierDeliveryDetailScreen> {
+class _LogisticAssignmentDetailScreenState extends State<LogisticAssignmentDetailScreen> {
   final List<PlantModel> plant = [
     PlantModel(plantName: 'Selada', price: 5000),
-    PlantModel(plantName: 'Pakcoy', price: 7000)
+    PlantModel(plantName: 'Pakcoy', price: 6000),
+    PlantModel(plantName: 'Kangkung', price: 7000),
   ];
 
   List<PlantQuantityModel> get plantQuantity => [
@@ -28,6 +29,10 @@ class _StateCourierDeliveryDetailScreen extends State<CourierDeliveryDetailScree
     PlantQuantityModel(
       plant: plant[1], 
       quantity: 30
+    ),
+    PlantQuantityModel(
+      plant: plant[2], 
+      quantity: 34
     ),
   ];
   
@@ -40,8 +45,8 @@ class _StateCourierDeliveryDetailScreen extends State<CourierDeliveryDetailScree
       time: '08:00 AM'
     ), 
     courier: UserModel(
-      username: 'Ahmad', 
-      role: 'Kurir', 
+      username: 'username', 
+      role: 'role', 
       onNotificationTap: () {},
     )
   );
@@ -58,7 +63,7 @@ class _StateCourierDeliveryDetailScreen extends State<CourierDeliveryDetailScree
           icon: Icon(Icons.arrow_back),
         ),
         title: const Text(
-          'Detail Pengiriman',
+          'Detail Penugasan',
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
         titleSpacing: 10,
@@ -68,7 +73,7 @@ class _StateCourierDeliveryDetailScreen extends State<CourierDeliveryDetailScree
       body: Container(
         padding: EdgeInsets.all(20),
         child: SingleChildScrollView(
-          child: DeliveryDetailCard(assignment: assignment),
+          child: LogisticDeliveryDetailCard(assignment: assignment),
         ),
       )
     );

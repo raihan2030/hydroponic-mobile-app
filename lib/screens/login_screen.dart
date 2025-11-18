@@ -1,5 +1,3 @@
-// lib/screens/login_screen.dart
-
 import 'package:flutter/material.dart';
 import 'package:hydroponics_app/theme/app_colors.dart';
 import 'package:hydroponics_app/widgets/styled_elevated_button.dart';
