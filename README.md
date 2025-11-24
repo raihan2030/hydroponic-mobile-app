@@ -17,7 +17,7 @@ samples, guidance on mobile development, and a full API reference.
 
 ## Mata Kuliah: Manajemen Proyek TI
 
-Dosen Pengampu: Erika Maulidiya S.Kom
+Dosen Pengampu: Erika Maulidiya S.Kom, M.Kom
 
 
 Tim 2
